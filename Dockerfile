@@ -13,3 +13,9 @@ RUN cd ~/mpich2/build && make && make install
 RUN mkdir ~/OpenFOAM && mkdir /opt/OpenFOAM
 
 RUN cd ~/OpenFOAM && wget https://github.com/OpenFOAM/OpenFOAM-dev/archive/master.zip
+
+RUN apt-get install unzip
+
+RUN cd ~/OpenFOAM && unzip master.zip
+
+RUN ls ~/OpenFOAM/ && ./AllMake
