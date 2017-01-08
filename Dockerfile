@@ -16,6 +16,8 @@ RUN cd ~/OpenFOAM && wget https://github.com/OpenFOAM/OpenFOAM-dev/archive/maste
 
 RUN apt-get install unzip
 
-RUN cd ~/OpenFOAM && unzip master.zip
+RUN cd ~/OpenFOAM && unzip master.zip && mv OpenFOAM-dev-master OpenFOAM-dev
 
-RUN ls ~/OpenFOAM/ && ./AllMake
+RUN apt-get install flex bison git-core cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev
+
+RUN /bin/bash -c 'source ~/OpenFOAM/OpenFOAM-dev/etc/bashrc && cd $WM_PROJECT_DIR && ./Allwmake'
