@@ -7,8 +7,8 @@ RUN cd ~/mpich2 && wget http://www.mcs.anl.gov/research/projects/mpich2/download
 
 RUN apt-get install build-essential gfortran
 
-RUN cd ~/mpich2/build && ~/mpich2/mpich2-1.4.1p1/configure -prefix=/opt/mpich2
-RUN cd ~/mpich2/build && make && make install
+#RUN cd ~/mpich2/build && ~/mpich2/mpich2-1.4.1p1/configure -prefix=/opt/mpich2
+#RUN cd ~/mpich2/build && make && make install
 
 RUN mkdir ~/OpenFOAM && mkdir /opt/OpenFOAM
 
@@ -19,5 +19,7 @@ RUN apt-get install unzip
 RUN cd ~/OpenFOAM && unzip master.zip && mv OpenFOAM-dev-master OpenFOAM-dev
 
 RUN apt-get install flex bison git-core cmake zlib1g-dev libboost-system-dev libboost-thread-dev libopenmpi-dev openmpi-bin gnuplot libreadline-dev libncurses-dev libxt-dev
+
+RUN apt-get install libc6-dev
 
 RUN /bin/bash -c 'source ~/OpenFOAM/OpenFOAM-dev/etc/bashrc && cd $WM_PROJECT_DIR && ./Allwmake'
